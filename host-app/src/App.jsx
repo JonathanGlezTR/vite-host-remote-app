@@ -1,36 +1,34 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Route, Routes, Link } from "react-router-dom";
+
 import "./App.css";
 
-import MyButton from "remoteApp/Button";
+import AppLocalState from "./AppLocalState";
+import AppWithContext from "./AppWithContext";
+import AppWithRedux from "./AppWithRedux";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div>
-        <MyButton />
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>HOST APP</h1>
+      <div className="routes-container">
+        <ul>
+          <li>
+            <Link to="/local-state">Local state</Link>
+          </li>
+          <li>
+            <Link to="/context">Context</Link>
+          </li>
+          <li>
+            <Link to="/redux">Redux</Link>
+          </li>
+        </ul>
+
+        <Routes>
+          <Route path="/local-state" element={<AppLocalState />} />
+          <Route path="/context" element={<AppWithContext />} />
+          <Route path="/redux" element={<AppWithRedux />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
