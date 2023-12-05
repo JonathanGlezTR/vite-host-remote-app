@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-
-const Button = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <button onClick={() => setCount(count + 1)}> BTN APP 1: {count} </button>
-  );
+const Button = (props) => {
+  const { children, ...others } = props;
+  return <button {...others}>{children}</button>;
 };
 export default Button;
